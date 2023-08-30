@@ -1,17 +1,14 @@
-/* Reset some default styles */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
 
-/* Container styles */
 .container {
     display: flex;
     height: 95.75vh;
 }
 
-/* Sidebar styles */
 .sidebar {
     flex: 1;
     background-color: #333;
@@ -62,7 +59,6 @@ body {
     background-color: #b32d00;
 }
 
-/* Main styles */
 .main {
     flex: 3;
     padding: 20px;
@@ -117,10 +113,10 @@ body {
 #submit-todo:hover {
     background-color: #0056b3;
 }
-/* Style for delete button */
+
 .delete-button {
-    background-color: #ff5b5b; /* Red background color */
-    color: white; /* White text color */
+    background-color: #ff5b5b;
+    color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -128,10 +124,9 @@ body {
     margin-left: 5px;
 }
 
-/* Style for edit button */
 .edit-button {
-    background-color: #4caf50; /* Green background color */
-    color: white; /* White text color */
+    background-color: #4caf50;
+    color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;

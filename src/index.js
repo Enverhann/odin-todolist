@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dueDateInput = document.getElementById('due-date');
     const prioritySelect = document.getElementById('priority');
 
-    // Initialize projects and todos arrays
     const projects = [];
     const todos = [];
 
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         projects.forEach((project, index) => {
             const projectItem = document.createElement('li');
     
-            // Create a div to hold the project name
+            // Create a div for project name
             const projectNameDiv = document.createElement('div');
             projectNameDiv.textContent = project.name;
     
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             editButton.classList.add('edit-button');
             editButton.addEventListener('click', () => editProject(index));
     
-            // Append project name and buttons to the project item
+            // Append project name and buttons
             projectItem.appendChild(projectNameDiv);
             buttonDiv.appendChild(deleteButton);
             buttonDiv.appendChild(editButton);
@@ -53,17 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
         todos.forEach((todo, index) => {
             const todoItem = document.createElement('li');
             
-            // Create a container div for the todo title and description
+            // Div for todo title and description
             const todoContent = document.createElement('div');
             
-            // Create a paragraph for the todo title
             const titleParagraph = document.createElement('p');
             titleParagraph.textContent = `
                 Title: ${todo.title}
             `;
 
-            
-            // Create a paragraph for the todo description
             const descriptionParagraph = document.createElement('p');
             descriptionParagraph.textContent = `
                 Description: ${todo.description}
@@ -74,14 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             todoItem.appendChild(todoContent);
             
-            // Create a container div for todo details (due date and priority)
+            // Div for due date and priority
             const todoDetails = document.createElement('div');
             todoDetails.innerHTML = `
                 <p>Due Date: ${todo.dueDate}</p>
                 <p>Priority: ${todo.priority}</p>
             `;
             
-            // Create a container div for edit and delete buttons
+            // Div fo delete and edit
             const buttonContainer = document.createElement('div');
             
             // Create delete and edit buttons
@@ -105,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Event listener for create project button
+    // Listener for project
     createProjectButton.addEventListener('click', () => {
         const projectName = prompt('Enter project name:');
         if (projectName) {
@@ -116,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Event listener for create todo button
+    // Listener for create todo
     createTodoButton.addEventListener('click', () => {
         todoForm.style.display = 'block'; // Show the todo form
     });
 
-    // Event listener for submitting a new todo
+    // Listener for submit todo
     todoForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -146,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function deleteProject(index) {
-        // Remove the project at the given index from the projects array
+        // Delete the project
         projects.splice(index, 1);
         renderProjects();
         saveData();
@@ -160,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     function deleteTodo(index) {
-        // Remove the todo at the given index from the todos array
+        // Delete the todo
         todos.splice(index, 1);
         renderTodos();
         saveData();
@@ -170,16 +166,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const editedTodo = todos[index];
         const todoForm = document.getElementById('todo-form');
         
-        // Fill the form with the current todo's information
+        // Form with infos before edit
         document.getElementById('todo-title').value = editedTodo.title;
         document.getElementById('todo-description').value = editedTodo.description;
         document.getElementById('due-date').value = editedTodo.dueDate;
         document.getElementById('priority').value = editedTodo.priority;
     
-        // Display the todo form
+        // Form display
         todoForm.style.display = 'block';
     
-        // Remove the current todo from the todos array
         todos.splice(index, 1);
         renderTodos();
         saveData();
@@ -191,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.addEventListener('click', () => saveEditedTodoInfo(index)); // Add a new click event
     }
     
-    // Function to save edited todo information
+    // Save edited todo
     function saveEditedTodoInfo(index) {
         const editedTodo = {
             title: document.getElementById('todo-title').value,
@@ -200,12 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
             priority: document.getElementById('priority').value,
         };
     
-        // Reassign the edited todo to the same index in the todos array
+        // Edited todo same array index
         todos[index] = editedTodo;
         renderTodos();
         saveData();
     
-        // Clear the form fields and hide the form
+        // Turn off form
         document.getElementById('todo-title').value = '';
         document.getElementById('todo-description').value = '';
         document.getElementById('due-date').value = '';
@@ -214,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('todo-form').style.display = 'none';
     }
    
-    // Function to save data to local storage
+    // Save local storage
     function saveData() {
         try {
             localStorage.setItem('projects', JSON.stringify(projects));
@@ -242,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Load data from local storage when the app starts
+    // Load from local storage app start
     loadData();
     renderProjects();
     renderTodos();
