@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Projects</h2>
+            <button id="create-project" class="create-button">Create Project</button>
+            <ul id="project-list" class="list"></ul>
+        </div>
+
+        <div class="main">
+            <h2>Todos</h2>
+            <button id="create-todo" class="create-button">Create Todo</button>
+            <form id="todo-form" style="display: none;">
+                <input type="text" id="todo-title" placeholder="Enter todo title" required>
+                <textarea id="todo-description" placeholder="Enter todo description"></textarea>
+                <input type="date" id="due-date" required>
+                <select id="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button id="submit-todo">Create Todo</button>
+            </form>
+            <ul id="todo-list" class="list"></ul>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Enverhan</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>
